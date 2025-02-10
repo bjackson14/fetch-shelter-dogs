@@ -1,0 +1,40 @@
+.container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  place-self: center;
+  padding: 5em;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  background-color: #e3e3e3;
+  color: #233142;
+}
+
+input,
+label,
+button {
+  grid-column-start: 2;
+  grid-column-end: 3;
+}
+
+input {
+  margin-bottom: 0.5em;
+}
+
+button {
+  place-self: center;
+  width: 50%;
+  padding: 0.75em;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  background-color: #455d7a;
+  color: #e3e3e3;
+  border: none;
+  border-radius: 0.33em;
+}
+
+.error-label,
+.error-text {
+  color: #f95959;
+}
+
+.error-input {
+  border-color: #f95959;
+}

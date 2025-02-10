@@ -1,0 +1,11 @@
+<main class="container">
+  <label for="name">Name<span [ngClass]="{'error-label': hasNameError}">*</span></label>
+  <input type="text" id="name" [ngClass]="{'error-input': hasNameError}" placeholder="Name" #name />
+  <label for="email">Email<span [ngClass]="{'error-label': hasEmailError}">*</span></label>
+  <input type="text" id="email" [ngClass]="{'error-input': hasEmailError}" placeholder="Email" #email />
+  <button type="button" (click)="login(name.value, email.value)">Login</button>
+
+  <div class="error-text" *ngIf="statusError">
+    <p>There was a problem with your login information. Please try again</p>
+  </div>
+</main>
