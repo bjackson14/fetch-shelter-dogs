@@ -1,9 +1,18 @@
 .container {
   display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  place-self: center;
   padding: 5em;
   font-family: Verdana, Geneva, Tahoma, sans-serif;
   background-color: #e3e3e3;
   color: #233142;
+}
+
+input,
+label,
+button {
+  grid-column-start: 2;
+  grid-column-end: 3;
 }
 
 input {
