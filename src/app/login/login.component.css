@@ -1,0 +1,22 @@
+.container {
+  display: grid;
+  width: 50%;
+  margin: auto;
+  padding: 5em;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  background-color: #e3e3e3;
+  color: #233142;
+}
+
+input {
+  margin-bottom: 0.5em;
+}
+
+button {
+  place-self: center;
+  width: 25%;
+  padding: 0.5em;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  background-color: #455d7a;
+  color: #e3e3e3;
+}
