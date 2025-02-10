@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { LoginService } from '../services/login/login.service';
 import { Credentials } from '../interfaces/credentials';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'login',
@@ -12,7 +13,7 @@ import { Credentials } from '../interfaces/credentials';
 export class LoginComponent {
   private credentials: Credentials;
 
-  constructor( private loginService: LoginService) {
+  constructor( private loginService: LoginService, private router: Router) {
     this.credentials = {
       name: '',
       email: ''
@@ -23,6 +24,6 @@ export class LoginComponent {
     this.credentials.name = name;
     this.credentials.email = email;
     this.loginService.login(this.credentials)
-      .subscribe(data => console.log(data));
+      .subscribe(() => this.router.navigate(['/search']));
   }
 }
