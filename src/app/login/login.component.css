@@ -1,7 +1,5 @@
 .container {
   display: grid;
-  width: 50%;
-  margin: auto;
   padding: 5em;
   font-family: Verdana, Geneva, Tahoma, sans-serif;
   background-color: #e3e3e3;
@@ -14,9 +12,20 @@ input {
 
 button {
   place-self: center;
-  width: 25%;
-  padding: 0.5em;
+  width: 50%;
+  padding: 0.75em;
   font-family: Verdana, Geneva, Tahoma, sans-serif;
   background-color: #455d7a;
   color: #e3e3e3;
+  border: none;
+  border-radius: 0.33em;
+}
+
+.error-label,
+.error-text {
+  color: #f95959;
+}
+
+.error-input {
+  border-color: #f95959;
 }

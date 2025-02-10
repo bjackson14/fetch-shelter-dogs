@@ -18,6 +18,7 @@ export class LoginService {
 
   constructor(private http: HttpClient) {}
 
+  // Uses credentials to login to application
   login(credentials: Credentials) {
     const loginUrl = this.baseUrl + this.loginEndpoint;
     return this.http.post(loginUrl, credentials, {
