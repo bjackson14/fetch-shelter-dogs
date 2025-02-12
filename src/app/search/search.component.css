@@ -1,0 +1,51 @@
+main {
+  margin: 1em;
+}
+
+.dog-container {
+  display: grid;
+  grid-template-columns: 1fr;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  background-color: #233142;
+  color: #e3e3e3;
+  margin-bottom: 1em;
+}
+
+.info-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 1em 0;
+}
+
+img {
+  width: 100%;
+  object-fit: cover;
+}
+
+p {
+  margin: 0;
+  line-height: 1.5;
+}
+
+.nav-container {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 1em;
+}
+
+button {
+  display: flex;
+  padding: 0.5em;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-weight: bolder;
+  background-color: #e3e3e3;
+  color: #233142;
+  border: none;
+  border-radius: 0.25em;
+}
+
+.disabled {
+  color: #e3e3e3;
+}

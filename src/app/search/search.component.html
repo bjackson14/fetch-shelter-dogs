@@ -1,1 +1,15 @@
-<p>search works!</p>
+<main>
+  <section *ngFor="let dog of dogs" class="dog-container">
+    <img src="{{dog.img}}" alt="A {{dog.breed}} named {{dog.name}}" />
+    <div class="info-container">
+      <p>Breed: {{dog.breed}}</p>
+      <p>Name: {{dog.name}}</p>
+      <p>Age: {{dog.age}}</p>
+      <p>Zip Code: {{dog.zip_code}}</p>
+    </div>
+  </section>
+  <nav class="nav-container">
+    <button [ngClass]="{'disabled': !prevousDogIds}" [disabled]="!prevousDogIds">Back</button>
+    <button [ngClass]="{'disabled': !nextDogIds}" [disabled]="!nextDogIds">Next</button>
+  </nav>
+</main>

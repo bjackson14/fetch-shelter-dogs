@@ -1,32 +1,35 @@
 import { Component, OnInit } from '@angular/core';
 import { DogService } from '../services/dog/dog.service';
 import { Dog } from '../interfaces/Dog';
-import { NgFor } from '@angular/common';
+import { NgClass, NgFor } from '@angular/common';
 
 @Component({
   selector: 'app-search',
   standalone: true,
-  imports: [NgFor],
+  imports: [NgFor, NgClass],
   templateUrl: './search.component.html',
   styleUrl: './search.component.css'
 })
 export class SearchComponent implements OnInit {
   nextDogIds: string;
+  prevousDogIds: string;
   dogs: Dog[];
 
   constructor(private dogService: DogService ) {
     this.nextDogIds = '';
+    this.prevousDogIds = ''
     this.dogs = [];
   }
 
   ngOnInit(): void {
-    this.initializeDogData();
+    this.getDogData();
   }
 
-  private initializeDogData() {
+  private getDogData() {
     this.dogService.getDogIds(this.nextDogIds)
       .subscribe(res => {
         this.nextDogIds = res.next;
+        this.prevousDogIds = res.prev;
         this.populateDogArray(res.resultIds)
       });
   }
