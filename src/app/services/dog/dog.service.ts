@@ -22,8 +22,8 @@ export class DogService {
     }
   }
 
-  getDogIds(page?: string): Observable<DogsSearchResponse> {
-    const url = this.baseUrl + (page ? page : '/dogs/search');
+  getDogIds(sortOrder: string, page?: string): Observable<DogsSearchResponse> {
+    const url = this.baseUrl + (page ? page : '/dogs/search?sort=breed:' + sortOrder);
     return this.http.get<DogsSearchResponse>(url, this.httpOptions);
   }
 

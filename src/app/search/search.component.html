@@ -1,4 +1,11 @@
 <main>
+  <section class="filter-container">
+    <label for="sort">Sort:</label>
+    <select id="sort" [(ngModel)]="sortOrder" (change)="setSortOrder($event)">
+      <option value="asc">Ascending</option>
+      <option value="desc">Descending</option>
+    </select>
+  </section>
   <section *ngFor="let dog of dogs" class="dog-container">
     <img src="{{dog.img}}" alt="A {{dog.breed}} named {{dog.name}}" />
     <div class="info-container">
