@@ -52,7 +52,6 @@ export class LoginComponent {
     this.credentials.email = email;
     this.loginService.login(this.credentials)
       .subscribe(data => {
-        console.log(data)
         if (data.status === 200) {
           this.router.navigate(['/search'])
         } else {
