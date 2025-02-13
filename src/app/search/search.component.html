@@ -9,7 +9,7 @@
     </div>
   </section>
   <nav class="nav-container">
-    <button [ngClass]="{'disabled': !prevousDogIds}" [disabled]="!prevousDogIds">Back</button>
-    <button [ngClass]="{'disabled': !nextDogIds}" [disabled]="!nextDogIds">Next</button>
+    <button [ngClass]="{'disabled': !prevousDogIds}" [disabled]="!prevousDogIds" (click)="getDogData(prevousDogIds)">Back</button>
+    <button [ngClass]="{'disabled': !nextDogIds}" [disabled]="!nextDogIds" (click)="getDogData(nextDogIds)">Next</button>
   </nav>
 </main>

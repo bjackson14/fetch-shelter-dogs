@@ -10,14 +10,10 @@ import { HttpOptions } from '../../interfaces/http-options';
 })
 export class DogService {
   private baseUrl: string;
-  private searchDogsEndpoint: string;
-  private dogsEndpoint: string;
   private httpOptions: HttpOptions;
 
   constructor(private http: HttpClient) {
     this.baseUrl = 'https://frontend-take-home-service.fetch.com';
-    this.searchDogsEndpoint = '/dogs/search';
-    this.dogsEndpoint = '/dogs';
     this.httpOptions = {
       headers: new HttpHeaders({
         'Content-Type': 'application/json'
@@ -26,13 +22,13 @@ export class DogService {
     }
   }
 
-  getDogIds(next: string): Observable<DogsSearchResponse> {
-    const url = this.baseUrl + this.searchDogsEndpoint + next;
+  getDogIds(page?: string): Observable<DogsSearchResponse> {
+    const url = this.baseUrl + (page ? page : '/dogs/search');
     return this.http.get<DogsSearchResponse>(url, this.httpOptions);
   }
 
   getDogs(ids: Array<string>): Observable<Dog[]> {
-    const url = this.baseUrl + this.dogsEndpoint;
+    const url = this.baseUrl + '/dogs';
     return this.http.post<Dog[]>(url, ids, this.httpOptions);
   }
 }

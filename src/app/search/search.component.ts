@@ -25,17 +25,20 @@ export class SearchComponent implements OnInit {
     this.getDogData();
   }
 
-  private getDogData() {
-    this.dogService.getDogIds(this.nextDogIds)
+  getDogData(page?: string) {
+    this.dogService.getDogIds(page)
       .subscribe(res => {
         this.nextDogIds = res.next;
         this.prevousDogIds = res.prev;
-        this.populateDogArray(res.resultIds)
+        this.populateDogArray(res.resultIds);
       });
   }
 
   private populateDogArray(dogIds: string[]) {
     this.dogService.getDogs(dogIds)
-      .subscribe(res => this.dogs = res)
+      .subscribe(res => {
+        this.dogs = res;
+        window.scrollTo(0, 0);
+      })
   }
 }
