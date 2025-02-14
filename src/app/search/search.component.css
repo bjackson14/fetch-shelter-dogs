@@ -37,6 +37,10 @@ select {
   margin-bottom: 1em;
 }
 
+.selected {
+  border: solid 0.5em #455d7a;
+}
+
 .info-container {
   display: flex;
   flex-direction: column;

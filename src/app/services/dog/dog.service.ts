@@ -1,9 +1,10 @@
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { DogsSearchResponse } from '../../interfaces/responses';
-import { Dog } from '../../interfaces/Dog';
+import { DogsSearchResponse } from '../../interfaces/dog-search-response';
+import { Dog } from '../../interfaces/dog';
 import { HttpOptions } from '../../interfaces/http-options';
+import { Match } from '../../interfaces/match';
 
 @Injectable({
   providedIn: 'root'
@@ -19,11 +20,13 @@ export class DogService {
     }
   }
 
-  getDogIds(sortOrder: string, selectedBreed: string, page?: string): Observable<DogsSearchResponse> {
+  getDogIds(sortOrder: string, selectedBreed?: string, page?: string): Observable<DogsSearchResponse> {
     const url = this.baseUrl + (page ? page : '/dogs/search');
     let options: HttpOptions = {...this.httpOptions};
     let params = new HttpParams();
-    params = params.set('sort', `breed:${sortOrder}`);
+    if (!page) {
+      params = params.set('sort', `breed:${sortOrder}`);
+    }
     if (selectedBreed) {
       params = params.set('breeds', selectedBreed);
     }
@@ -39,5 +42,10 @@ export class DogService {
   getDogBreeds(): Observable<string[]> {
     const url = this.baseUrl + '/dogs/breeds';
     return this.http.get<string[]>(url, this.httpOptions);
+  }
+
+  getMatch(favorites: string[]): Observable<Match> {
+    const url = this.baseUrl + '/dogs/match';
+    return this.http.post<Match>(url, favorites, this.httpOptions);
   }
 }

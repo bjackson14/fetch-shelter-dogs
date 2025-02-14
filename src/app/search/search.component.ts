@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { DogService } from '../services/dog/dog.service';
-import { Dog } from '../interfaces/Dog';
+import { Dog } from '../interfaces/dog';
 import { NgClass, NgFor } from '@angular/common';
 import { FormsModule } from '@angular/forms'
 
@@ -18,6 +18,7 @@ export class SearchComponent implements OnInit {
   sortOrder: string;
   selectedBreed: string;
   breeds: string[];
+  favorites: string[];
 
   constructor(private dogService: DogService ) {
     this.nextDogEndPoint = '';
@@ -26,6 +27,7 @@ export class SearchComponent implements OnInit {
     this.sortOrder = 'asc';
     this.selectedBreed = '';
     this.breeds = [];
+    this.favorites = [];
   }
 
   ngOnInit(): void {
@@ -68,15 +70,29 @@ export class SearchComponent implements OnInit {
       .subscribe(res => this.breeds = res);
   }
 
+  getMatch(): void {
+    this.dogService.getMatch(this.favorites)
+      .subscribe(res => console.log(res));
+  }
+
   // Sets the sort order and gets a new list of sorted dogs
   setSortOrder(event: Event): void {
     this.sortOrder = (event.target as HTMLSelectElement).value;
     this.getDogData();
   }
 
-  setFilterBy(event: Event): void {
-    console.log(event)
-    // this.selectedBreed = (event.target as HTMLSelectElement).value;
+  // Filters the dog list bt breed
+  setFilterByBreed(event: Event): void {
+    this.selectedBreed = (event.target as HTMLSelectElement).value;
     this.getDogData();
+  }
+
+  // Adds of removes a dog id from the favorites array
+  addOrRemoveFavoriteDog(id: string): void {
+    if (this.favorites.includes(id)) {
+      this.favorites = this.favorites.filter(dogId => dogId !== id)
+    } else {
+      this.favorites.push(id);
+    }
   }
 }

@@ -11,13 +11,13 @@
 
     <div class="select-container">
       <label for="filter">Filter:</label>
-      <select id="filter" [(ngModel)]="selectedBreed" (change)="setFilterBy($event)">
+      <select id="filter" [(ngModel)]="selectedBreed" (change)="setFilterByBreed($event)">
         <option *ngFor="let breed of breeds" value="{{breed}}">{{breed}}</option>
       </select>
     </div>
   </section>
 
-  <section *ngFor="let dog of dogs" class="dog-container">
+  <section *ngFor="let dog of dogs" [ngClass]="{'dog-container': true, 'selected': favorites.includes(dog.id)}" id="{{dog.id}}" (click)="addOrRemoveFavoriteDog(dog.id)">
     <img src="{{dog.img}}" alt="{{dog.breed}} named {{dog.name}}" />
     <div class="info-container">
       <p>Breed: {{dog.breed}}</p>
@@ -29,6 +29,7 @@
 
   <nav class="nav-container">
     <button [ngClass]="{'disabled': !prevousDogEndPoint}" [disabled]="!prevousDogEndPoint" (click)="getDogData(prevousDogEndPoint)">Back</button>
+    <button [ngClass]="{'disabled': favorites.length === 0 }" [disabled]="favorites.length === 0" (click)="getMatch()">Find My Match</button>
     <button [ngClass]="{'disabled': !nextDogEndPoint}" [disabled]="!nextDogEndPoint" (click)="getDogData(nextDogEndPoint)">Next</button>
   </nav>
 
