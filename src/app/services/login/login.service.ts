@@ -7,22 +7,16 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 })
 
 export class LoginService {
-  private baseUrl = 'https://frontend-take-home-service.fetch.com';
-  private loginEndpoint = '/auth/login';
-  httpOptions = {
-    headers: new HttpHeaders({
-      'Content-Type': 'application/json'
-    }),
-    withCredentials: true
-  }
+  private baseUrl: string;
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) {
+    this.baseUrl = 'https://frontend-take-home-service.fetch.com';
+  }
 
   // Uses credentials to login to application
   login(credentials: Credentials) {
-    const loginUrl = this.baseUrl + this.loginEndpoint;
+    const loginUrl = this.baseUrl + '/auth/login';
     return this.http.post(loginUrl, credentials, {
-      ...this.httpOptions,
       observe: 'response',
       responseType: 'text'
     });

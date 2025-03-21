@@ -1,1 +1,38 @@
-<p>search works!</p>
+<main>
+
+  <section class="filter-container">
+    <div class="select-container">
+      <label for="sort">Sort:</label>
+      <select id="sort" [(ngModel)]="sortOrder" (change)="setSortOrder($event)">
+        <option value="asc">Ascending</option>
+        <option value="desc">Descending</option>
+      </select>
+    </div>
+
+    <div class="select-container">
+      <label for="filter">Filter:</label>
+      <select id="filter" [(ngModel)]="selectedBreed" (change)="setFilterByBreed($event)">
+        <option *ngFor="let breed of breeds" value="{{breed}}">{{breed}}</option>
+      </select>
+    </div>
+  </section>
+
+  <section *ngFor="let dog of dogs" [ngClass]="{'dog-container': true, 'selected': favorites.includes(dog.id)}" id="{{dog.id}}" (click)="addOrRemoveFavoriteDog(dog.id)">
+    <div class="img-container">
+      <img src="{{dog.img}}" alt="{{dog.breed}} named {{dog.name}}" />
+    </div>
+    <div class="info-container">
+      <p>Breed: {{dog.breed}}</p>
+      <p>Name: {{dog.name}}</p>
+      <p>Age: {{dog.age}}</p>
+      <p>Zip Code: {{dog.zip_code}}</p>
+    </div>
+  </section>
+
+  <nav class="nav-container">
+    <button [ngClass]="{'disabled': !prevousDogEndPoint}" [disabled]="!prevousDogEndPoint" (click)="getDogData(prevousDogEndPoint)">Back</button>
+    <button [ngClass]="{'disabled': favorites.length === 0 }" [disabled]="favorites.length === 0" (click)="getMatch()">Find My Match</button>
+    <button [ngClass]="{'disabled': !nextDogEndPoint}" [disabled]="!nextDogEndPoint" (click)="getDogData(nextDogEndPoint)">Next</button>
+  </nav>
+
+</main>
