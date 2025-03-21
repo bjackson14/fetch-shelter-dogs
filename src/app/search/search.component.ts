@@ -72,7 +72,12 @@ export class SearchComponent implements OnInit {
 
   getMatch(): void {
     this.dogService.getMatch(this.favorites)
-      .subscribe(res => console.log(res));
+      .subscribe(res => {
+        this.populateDogArray([res.match]);
+        this.prevousDogEndPoint = '';
+        this.nextDogEndPoint = '';
+        this.favorites = [];
+      });
   }
 
   // Sets the sort order and gets a new list of sorted dogs
