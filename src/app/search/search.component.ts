@@ -5,7 +5,7 @@ import { NgClass, NgFor } from '@angular/common';
 import { FormsModule } from '@angular/forms'
 
 @Component({
-  selector: 'app-search',
+  selector: 'fsd-search',
   standalone: true,
   imports: [NgFor, NgClass, FormsModule],
   templateUrl: './search.component.html',

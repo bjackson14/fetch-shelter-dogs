@@ -1,0 +1,22 @@
+header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: #233142;
+}
+
+div {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1em;
+}
+
+fa-icon {
+  font-size: 2rem;
+}
+
+h1 {
+  margin: 0;
+  font-size: 1.5rem;
+}
