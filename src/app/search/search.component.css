@@ -1,15 +1,16 @@
-main {
-  margin: 1em;
-}
-
 .filter-container,
 .select-container {
   display: flex;
   flex-direction: column;
 }
 
+.filter-container,
+.dog-container,
+img {
+  border-radius: 0.75em;
+}
+
 .filter-container {
-  align-items: start;
   gap: 0.75em;
   margin-bottom: 0.5em;
   padding: 0.75em;
@@ -32,9 +33,11 @@ select {
 .dog-container {
   display: grid;
   grid-template-columns: 1fr;
+  gap: 1em;
   background-color: #233142;
   color: #e3e3e3;
   margin-bottom: 1em;
+  border: solid 0.5em #233142;
 }
 
 .selected {
@@ -78,4 +81,35 @@ button {
 
 .disabled {
   color: #e3e3e3;
+}
+
+@media (min-width: 768px) {
+  .filter-container {
+    flex-direction: unset;
+    justify-content: space-between;
+  }
+
+  .select-container {
+    width: 50%;
+  }
+
+  .dog-container {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .img-container {
+    display: flex;
+    max-width: 500px;
+  }
+  
+  img {
+    flex: 1 1 auto;
+    aspect-ratio: 1 / 1;
+    object-fit: cover;
+    width: 100%;
+  }
+
+  .info-container p {
+    place-self: start;
+  }
 }
