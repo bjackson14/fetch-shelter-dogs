@@ -1,11 +1,11 @@
-import { Component } from '@angular/core';
-import { LoginService } from '../services/login/login.service';
+import { Component, inject } from '@angular/core';
+import { AuthenticationService } from '../services/authentication/authentication.service';
 import { Credentials } from '../interfaces/credentials';
 import { Router } from '@angular/router';
 import { NgClass, NgIf } from '@angular/common';
 
 @Component({
-  selector: 'login',
+  selector: 'fsd-login',
   standalone: true,
   imports: [NgClass, NgIf],
   templateUrl: './login.component.html',
@@ -13,11 +13,13 @@ import { NgClass, NgIf } from '@angular/common';
 })
 export class LoginComponent {
   private credentials: Credentials;
+  private authenticationService: AuthenticationService;
   hasNameError: boolean;
   hasEmailError: boolean;
   statusError: boolean;
 
-  constructor( private loginService: LoginService, private router: Router) {
+  constructor(private router: Router) {
+    this.authenticationService = inject(AuthenticationService);
     this.credentials = {
       name: '',
       email: ''
@@ -50,9 +52,9 @@ export class LoginComponent {
     // Otherwise display error
     this.credentials.name = name;
     this.credentials.email = email;
-    this.loginService.login(this.credentials)
+    this.authenticationService.login(this.credentials)
       .subscribe(data => {
-        if (data.status === 200) {
+        if (data) {
           this.router.navigate(['/search'])
         } else {
           this.statusError = true;

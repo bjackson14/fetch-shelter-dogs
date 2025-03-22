@@ -1,17 +1,18 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
 import { DogService } from '../services/dog/dog.service';
 import { Dog } from '../interfaces/dog';
 import { NgClass, NgFor } from '@angular/common';
 import { FormsModule } from '@angular/forms'
 
 @Component({
-  selector: 'app-search',
+  selector: 'fsd-search',
   standalone: true,
   imports: [NgFor, NgClass, FormsModule],
   templateUrl: './search.component.html',
   styleUrl: './search.component.css'
 })
 export class SearchComponent implements OnInit {
+  private dogService: DogService;
   nextDogEndPoint: string;
   prevousDogEndPoint: string;
   dogs: Dog[];
@@ -20,7 +21,8 @@ export class SearchComponent implements OnInit {
   breeds: string[];
   favorites: string[];
 
-  constructor(private dogService: DogService ) {
+  constructor() {
+    this.dogService = inject(DogService);
     this.nextDogEndPoint = '';
     this.prevousDogEndPoint = ''
     this.dogs = [];
