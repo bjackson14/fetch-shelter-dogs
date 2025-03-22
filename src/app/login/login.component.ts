@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { AuthenticationService } from '../services/authentication/authentication.service';
 import { Credentials } from '../interfaces/credentials';
 import { Router } from '@angular/router';
@@ -13,11 +13,13 @@ import { NgClass, NgIf } from '@angular/common';
 })
 export class LoginComponent {
   private credentials: Credentials;
+  private authenticationService: AuthenticationService;
   hasNameError: boolean;
   hasEmailError: boolean;
   statusError: boolean;
 
-  constructor( private authenticationService: AuthenticationService, private router: Router) {
+  constructor(private router: Router) {
+    this.authenticationService = inject(AuthenticationService);
     this.credentials = {
       name: '',
       email: ''

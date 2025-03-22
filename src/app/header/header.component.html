@@ -3,5 +3,5 @@
     <fa-icon [icon]="faDog"></fa-icon>
     <h1>Fetch Shelter Dogs</h1>
   </div>
-  <button *ngIf="authenticationService.isLoggedIn()">Logout</button>
+  <button *ngIf="authenticationService.isLoggedIn()" (click)="logout()">Logout</button>
 </header>
