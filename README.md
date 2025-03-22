@@ -1,27 +1,46 @@
 # FetchShelterDogs
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 18.1.2.
+Find the perfect dog for you!
 
-## Development server
+## 🐶 About FetchShelterDogs
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+FetchShelterDogs helps you search for dogs from shelters and adopt the one that best matches you. Simply log in with your name and email to browse thousands of shelter-registered dogs. Click on the ones that catch your eye and clikc **Find My Match** to get paired with your perfect companion.
 
-## Code scaffolding
+## 🚀 Getting Started
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+### Prerequisites
+Make sure you have [Node.js](https://nodejs.org/) installed before proceeding.
 
-## Build
+### Installation
+Clone the repository and navigate to the project directory:
+```
+git clone https://github.com/bjackson14/fetch-shelter-dogs.git
+cd fetch-shelter-dogs
+```
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+#### Install dependencies:
 
-## Running unit tests
+All you should need to do is run `npm install`
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+If you are having problems starting the server, make sure all dependencies are installed by running the following commands
+```
+npm install @angular/cli@18.1.2
+npm install @fortawesome/free-solid-svg-icons@6.7.2
+npm install @fortawesome/angular-fontawesome@0.15.0
+```
 
-## Running end-to-end tests
+#### Running the Project
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+Start the development server:
 
-## Further help
+```
+npm run start
+```
+Then, open http://localhost:4200/ in your browser to view the project.
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+#### 🛠️ Built With
+- [Angular CLI](https://github.com/angular/angular-cli) - Version 18.1.2
+- [Font Awesome](https://fontawesome.com/) - For icons
+
+#### 📄 License
+This project is licensed under the MIT License.
